@@ -1,3 +1,7 @@
+<script setup lang="ts">
+
+</script>
+
 <template>
   <span text="xl yellow center">Turn{{}}</span>
   <div grid grid-cols-3 grid-rows-3 p="2" h="xs" md="h-sm" lg="h-md">
