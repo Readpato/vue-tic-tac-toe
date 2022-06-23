@@ -1,6 +1,11 @@
 <template>
-  <main>
-    <h1>Tic Tac Toe</h1>
+  <div bg-purple-400 h-full flex justify-center items-center p-3>
     <RouterView />
-  </main>
+  </div>
 </template>
+
+<style>
+div {
+  font-family: Poppins, sans-serif;
+}
+</style>
