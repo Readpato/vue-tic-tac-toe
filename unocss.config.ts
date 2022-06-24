@@ -28,6 +28,7 @@ export default defineConfig({
       },
     }),
   ],
+  rules: [],
   // transformers: [
   //   transformerDirectives(),
   //   transformerVariantGroup(),
