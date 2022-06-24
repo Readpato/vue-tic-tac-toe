@@ -1,7 +1,10 @@
 <script setup lang="ts">
+// <-- Props -->
 const props = defineProps({
   side: { type: String, required: true, default: '' },
 })
+
+// <-- Variables -->
 let sideType = $ref(props.side)
 const circleTilesArray: number[] = []
 const exTilesArray: number[] = []
@@ -18,6 +21,15 @@ const winCombination = [
   [7, 5, 3],
 ]
 
+// <-- Computed properties -->
+const showTurnIcon = computed(() => {
+  if (sideType === 'circle')
+    return true
+  else
+    return false
+})
+
+// <-- Functions -->
 const changeType = (type: string) => {
   if (type === 'circle')
     sideType = 'ex'
@@ -64,7 +76,11 @@ const handleSelection = (id: string) => {
 </script>
 
 <template>
-  <span text="xl yellow center">Turn: {{ props.side }}</span>
+  <div flex justify-center items-center flex-row text-yellow space-x-1>
+    <span text="xl center">Turn: </span>
+    <div v-if="!showTurnIcon" w-8 h-8 class="i-tabler-x" />
+    <div v-if="showTurnIcon" w-8 h-8 class="i-tabler-circle" />
+  </div>
   <div grid grid-cols-3 grid-rows-3 p="2" h="xs" md="h-sm" lg="h-md">
     <GridTile id="1" :type="sideType" @on-tile-select="handleSelection" />
     <GridTile id="2" :type="sideType" @on-tile-select="handleSelection" />
