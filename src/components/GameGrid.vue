@@ -1,36 +1,38 @@
 <script setup lang="ts">
-
+const props = defineProps({
+  side: { type: String, required: true, default: '' },
+})
 </script>
 
 <template>
-  <span text="xl yellow center">Turn{{}}</span>
+  <span text="xl yellow center">Turn: {{ props.side }}</span>
   <div grid grid-cols-3 grid-rows-3 p="2" h="xs" md="h-sm" lg="h-md">
-    <div border-2 border-yellow>
-      1
+    <div border="2 yellow" text-yellow>
+      <GridTile />
     </div>
-    <div border-2 border-yellow>
-      2
+    <div border="2 yellow" text-yellow>
+      <GridTile />
     </div>
-    <div border-2 border-yellow>
-      3
+    <div border="2 yellow" text-yellow>
+      <GridTile />
     </div>
-    <div border-2 border-yellow>
-      4
+    <div border="2 yellow" text-yellow>
+      <GridTile />
     </div>
-    <div border-2 border-yellow>
-      5
+    <div border="2 yellow" text-yellow>
+      <GridTile />
     </div>
-    <div border-2 border-yellow>
-      6
+    <div border="2 yellow" text-yellow>
+      <GridTile />
     </div>
-    <div border-2 border-yellow>
-      7
+    <div border="2 yellow" text-yellow>
+      <GridTile />
     </div>
-    <div border-2 border-yellow>
-      8
+    <div border="2 yellow" text-yellow>
+      <GridTile />
     </div>
-    <div border-2 border-yellow>
-      9
+    <div border="2 yellow" text-yellow>
+      <GridTile />
     </div>
   </div>
 </template>

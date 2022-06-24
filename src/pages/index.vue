@@ -1,8 +1,10 @@
 <script setup lang="ts">
 let isGameStarted = $ref(false)
+let playerSide = $ref('')
 
-const startGame = () => {
+const startGame = (side: string) => {
   isGameStarted = !isGameStarted
+  playerSide = side
 }
 </script>
 
@@ -11,22 +13,19 @@ const startGame = () => {
     <h1 text-yellow text-2xl>
       Tic Tac Toe
     </h1>
-    <button v-if="isGameStarted" bg-yellow text-red-600 p-2 rounded-2 @click="startGame">
-      Start game
-    </button>
-    <div flex justify-center items-center flex-col space-y-2 text="yellow">
+    <div v-if="!isGameStarted" flex justify-center items-center flex-col space-y-2 text="yellow">
       <span text-xl>Choose a side:</span>
       <div flex justify-center items-center flex-row space-x-2>
-        <div w-12 h-12 hover:color-red-600 hover:bg-yellow rounded-xl>
+        <div w-12 h-12 hover:color-red-600 hover:bg-yellow rounded-xl @click="startGame('ex')">
           <div w-full h-full class="i-tabler-x" />
         </div>
-        <div w-12 h-12 hover:color-red-600 hover:bg-yellow rounded-xl>
+        <div w-12 h-12 hover:color-red-600 hover:bg-yellow rounded-xl @click="startGame('circle')">
           <div w-full h-full class="i-tabler-circle" />
         </div>
       </div>
     </div>
-    <!-- <div w-full flex flex-col>
-      <GameGrid />
-    </div> -->
+    <div v-else w-full flex flex-col>
+      <GameGrid :side="playerSide" />
+    </div>
   </main>
 </template>
