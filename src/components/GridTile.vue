@@ -9,11 +9,14 @@ let isCircleSelected = $ref(false)
 let isExSelected = $ref(false)
 let isTileSelected = $ref(false)
 
-const selectTile = (type: string) => {
+const selectIcon = (type: string) => {
   if (type === 'circle')
     isCircleSelected = true
   else
     isExSelected = true
+}
+const selectTile = (type: string) => {
+  selectIcon(type)
   isTileSelected = true
   emit('onTileSelect', props.id)
 }
