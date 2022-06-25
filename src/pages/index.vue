@@ -1,10 +1,15 @@
 <script setup lang="ts">
+// <-- Variables -->
 let isGameStarted = $ref(false)
 let playerSide = $ref('')
 
+// <-- Functions -->
 const startGame = (side: string) => {
   isGameStarted = !isGameStarted
   playerSide = side
+}
+const handleRestart = () => {
+  isGameStarted = !isGameStarted
 }
 </script>
 
@@ -16,16 +21,16 @@ const startGame = (side: string) => {
     <div v-if="!isGameStarted" flex justify-center items-center flex-col space-y-2 text="yellow">
       <span text-xl>Choose a side:</span>
       <div flex justify-center items-center flex-row space-x-2>
-        <div w-12 h-12 hover:color-red-600 hover:bg-yellow rounded-xl @click="startGame('ex')">
+        <div w-12 h-12 hover:color-red-600 hover:bg-yellow rounded-xl cursor-pointer transition ease-in-out hover:scale-120 @click="startGame('ex')">
           <div w-full h-full class="i-tabler-x" />
         </div>
-        <div w-12 h-12 hover:color-red-600 hover:bg-yellow rounded-xl @click="startGame('circle')">
+        <div w-12 h-12 hover:color-red-600 hover:bg-yellow rounded-xl cursor-pointer transition ease-in-out hover:scale-120 @click="startGame('circle')">
           <div w-full h-full class="i-tabler-circle" />
         </div>
       </div>
     </div>
     <div v-else w-full flex flex-col>
-      <GameGrid :side="playerSide" />
+      <GameGrid :side="playerSide" @on-game-restart="handleRestart" />
     </div>
   </main>
 </template>
