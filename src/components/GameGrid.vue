@@ -4,6 +4,9 @@ const props = defineProps({
   side: { type: String, required: true, default: '' },
 })
 
+// <-- Emits -->
+const emit = defineEmits(['onGameRestart'])
+
 // <-- Variables -->
 let hasCircleWon = $ref(false)
 let hasExWon = $ref(false)
@@ -91,6 +94,9 @@ const handleSelection = (id: string) => {
   calculateWin(sideType)
   changeType(sideType)
 }
+const restartGame = () => {
+  emit('onGameRestart')
+}
 </script>
 
 <template>
@@ -112,9 +118,14 @@ const handleSelection = (id: string) => {
       <GridTile id="9" :type="sideType" @on-tile-select="handleSelection" />
     </div>
   </div>
-  <div v-if="isGameEnded" flex justify-center items-center flex-row text-yellow space-x-1>
-    <span text="xl center">{{ endGameText }}</span>
-    <div v-if="hasExWon" w-8 h-8 class="i-tabler-x" />
-    <div v-if="hasCircleWon" w-8 h-8 class="i-tabler-circle" />
+  <div v-if="isGameEnded" flex justify-center items-center flex-col text-yellow space-y-3>
+    <div flex justify-center items-center flex-row space-x-1>
+      <span text="xl center">{{ endGameText }}</span>
+      <div v-if="hasExWon" w-8 h-8 class="i-tabler-x" />
+      <div v-if="hasCircleWon" w-8 h-8 class="i-tabler-circle" />
+    </div>
+    <button bg-yellow text-red-600 p-2 rounded-2 transition ease-in-out hover:scale-110 @click="restartGame">
+      Restart game
+    </button>
   </div>
 </template>
