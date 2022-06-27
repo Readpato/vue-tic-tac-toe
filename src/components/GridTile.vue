@@ -39,10 +39,10 @@ const selectTile = (type: string) => {
 <template>
   <div :id="props.id" :class="classStatus" border="2 yellow" text-yellow @click="selectTile(props.type)">
     <Transition animate-flip animate-duration-600>
-      <div v-if="isExSelected" w-full h-full class="i-tabler-x" />
+      <div v-if="isExSelected" data-cy="x-tile-icon" w-full h-full class="i-tabler-x" />
     </Transition>
     <Transition animate-rubber-band animate-duration-600>
-      <div v-if="isCircleSelected" w-full h-full class="i-tabler-circle" />
+      <div v-if="isCircleSelected" data-cy="circle-tile-icon" w-full h-full class="i-tabler-circle" />
     </Transition>
   </div>
 </template>
