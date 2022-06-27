@@ -119,7 +119,7 @@ const restartGame = () => {
     </div>
   </div>
   <div v-if="isGameEnded" data-cy="end-game-interface" flex justify-center items-center flex-col text-yellow space-y-3>
-    <div flex justify-center items-center flex-row space-x-1>
+    <div data-cy="end-game-modal" flex justify-center items-center flex-row space-x-1>
       <span data-cy="end-game-text" text="xl center">{{ endGameText }}</span>
       <div v-if="hasExWon" data-cy="x-endgame-icon" w-8 h-8 class="i-tabler-x" />
       <div v-if="hasCircleWon" data-cy="circle-endgame-icon" w-8 h-8 class="i-tabler-circle" />
