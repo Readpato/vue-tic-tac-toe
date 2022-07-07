@@ -9,4 +9,10 @@ describe('GridTile component unit tests', () => {
     await wrapper.trigger('click')
     expect(wrapper.find('[data-cy="x-tile-icon"]').exists()).toBe(true)
   })
+  it('Mounts component with Y prop and checks it appears', async () => {
+    const wrapper = mount(GridTile, { id: '2', type: 'circle' })
+    expect(wrapper.find('[data-cy="circle-tile-icon"]').exists()).toBe(false)
+    await wrapper.trigger('click')
+    expect(wrapper.find('[data-cy="circle-tile-icon"]').exists()).toBe(false)
+  })
 })
